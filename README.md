@@ -16,6 +16,7 @@ First, start the vpn container. Your ovpn file must be available at the
 
     docker run \
       --cap-add NET_ADMIN \
+      --e DNS=8.8.8.8 \
       --volume /home/me/vpnConfiguration/:/vpn/config \
       --name vpn
 
