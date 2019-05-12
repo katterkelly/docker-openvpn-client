@@ -18,7 +18,7 @@ First, start the vpn container. Your ovpn file must be available at the
       --cap-add NET_ADMIN \
       --e DNS=8.8.8.8 \
       --volume /home/me/vpnConfiguration/:/vpn/config \
-      --name vpn
+      --name vpn dheaps/openvpn-client
 
 Now, use the VPN tunnel by launching a container with the `container:<vpn
 container name>"`. This replaces the container's network stack with the vpn
