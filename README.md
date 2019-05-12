@@ -12,10 +12,14 @@ Usage
 -----
 
 First, start the vpn container. Your ovpn file must be available at the
-`/vpn/config/config.ovpn` path in the container:
+`/vpn/config/config.ovpn` path in the container. Note that to connect using anything
+other than the host's localhost, you must add the network to advertise too. You 
+do not need to do this if it was already done in another container sharing the same
+network (such as an stunnel connainer):
 
     docker run \
       --cap-add NET_ADMIN \
+      --e LOCAL_LAN=192.168.1.0/24 \
       --e DNS=8.8.8.8 \
       --volume /home/me/vpnConfiguration/:/vpn/config \
       --name vpn dheaps/openvpn-client
