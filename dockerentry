@@ -1,6 +1,6 @@
 #!/bin/ash
-mkdir /dev/net &&
-mknod /dev/net/tun c 10 200 &&
+if [ ! -d /dev/net ]; then mkdir /dev/net; fi &&
+if [ ! -f /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi
 openvpn /vpn/config/config.ovpn > /vpn/log &
 until grep "Initialization Sequence Completed" /vpn/log; do sleep 0.2 ; done &&
 echo nameserver $DNS > /etc/resolv.conf &&
