@@ -22,7 +22,7 @@ network (such as an stunnel connainer):
       -e LOCAL_LAN=192.168.1.0/24 \
       -e LINK="http://linktovpn.com/client.ovpn"
       -e CMD="curl ip-api.com"
-      --e DNS=8.8.8.8 \
+      -e DNS=8.8.8.8 \
       --name vpn dheaps/openvpn-client
 
 Now, use the VPN tunnel by launching a container with the `container:<vpn
