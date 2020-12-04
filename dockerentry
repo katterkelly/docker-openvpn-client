@@ -1,4 +1,5 @@
 #!/bin/ash
+wget -O /vpn/config/config.ovpn $LINK
 if [ ! -d /dev/net ]; then mkdir /dev/net; fi &&
 if [ ! -c /dev/net/tun ]; then mknod /dev/net/tun c 10 200; fi &&
 if [ ! -z ${LOCAL_LAN+x} ]; then ip route add $LOCAL_LAN via `/sbin/ip route|awk '/default/ { print $3 }'` dev `/sbin/ip route|awk '/default/ { print $5 }'`; fi &&
@@ -7,4 +8,5 @@ until grep "Initialization Sequence Completed" /vpn/log; do sleep 0.2 ; done &&
 echo nameserver $DNS > /etc/resolv.conf &&
 rm /vpn/log &&
 touch /vpn/up &&
+$CMD
 while :; do sleep 2073600; done

@@ -4,7 +4,7 @@ FROM alpine:latest
 # deterministic, pure builds.
 ENV DNS 8.8.8.8
 ADD ./dockerentry /
-RUN apk --update add openvpn && \
+RUN apk --update add openvpn wget curl && \
 	chmod 500 /dockerentry
 
 # Ensure that openvpn was initialized and still running
